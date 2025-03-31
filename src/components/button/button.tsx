@@ -3,6 +3,7 @@ import { LucideIcon } from 'lucide-react';
 interface ButtonProps {
 	label?: string;
 	icon?: LucideIcon;
+	iconSize?: number;
 	onClick?: (() => void) | undefined;
 	fullWidth?: boolean;
 	disabled?: boolean;
@@ -12,6 +13,7 @@ interface ButtonProps {
 export function Button({
 	label,
 	icon: Icon,
+	iconSize = 18,
 	onClick,
 	fullWidth = false,
 	disabled = false,
@@ -33,7 +35,7 @@ export function Button({
 				variantClasses[variant]
 			}`}
 		>
-			{Icon && <Icon size={18} />}
+			{Icon && <Icon size={iconSize} />}
 			{label}
 		</button>
 	);
