@@ -1,4 +1,4 @@
 export * from './button/button';
+export * from './clock/clock';
 export * from './header/header';
-export * from './timer/timer';
 export * from './timerControls/timerControls';
