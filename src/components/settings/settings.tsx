@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import { useCallback, useRef } from 'react';
+import { useRef } from 'react';
 import { Input } from '..';
 import { useTimerStore } from '../../store/useTimerStore';
 
