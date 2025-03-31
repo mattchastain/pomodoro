@@ -5,6 +5,7 @@ interface TimerProps {
 	timeLeft: number;
 	setTimeLeft: React.Dispatch<React.SetStateAction<number>>;
 	isBreak: boolean;
+	onComplete: () => void;
 }
 
 export function Clock({
@@ -12,20 +13,23 @@ export function Clock({
 	timeLeft,
 	setTimeLeft,
 	isBreak,
+	onComplete,
 }: TimerProps) {
 	useEffect(() => {
 		let interval: number;
 
-		if (timerActive) {
+		if (timerActive && timeLeft > 0) {
 			interval = setInterval(() => {
 				setTimeLeft((prevSeconds) => prevSeconds - 1);
 			}, 1000);
+		} else if (timerActive && timeLeft === 0) {
+			onComplete();
 		}
 
 		return () => {
 			if (interval) clearInterval(interval);
 		};
-	}, [timerActive]);
+	}, [timerActive, timeLeft, onComplete, setTimeLeft]);
 
 	const minutes = Math.floor(timeLeft / 60);
 	const seconds = timeLeft % 60;
