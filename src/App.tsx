@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Clock, Header, Settings, TimerControls } from './components';
 import { useTimerStore } from './store/useTimerStore';
 
@@ -6,19 +6,19 @@ export default function App() {
 	const { studyDuration, breakDuration } = useTimerStore();
 	const [isBreak, setIsBreak] = useState(false);
 
-	const [settingsOpen, setSettingsOpen] = useState(false);
+	const [settingsOpen, setSettingsOpen] = useState(true);
 
 	const [timerActive, setTimerActive] = useState(false);
 	const [timeLeft, setTimeLeft] = useState<number>(studyDuration);
 
 	const onComplete = useCallback(() => {
 		setTimerActive(false);
-		setIsBreak((prev) => {
-			const newIsBreak = !prev;
-			setTimeLeft(newIsBreak ? breakDuration : studyDuration);
-			return newIsBreak;
-		});
-	}, [isBreak, studyDuration, breakDuration]);
+		setIsBreak((prev) => !prev);
+	}, []);
+
+	useEffect(() => {
+		setTimeLeft(isBreak ? breakDuration : studyDuration);
+	}, [studyDuration, breakDuration, isBreak]);
 
 	return (
 		<div className='flex flex-col gap-12 max-w-xl mx-auto'>
