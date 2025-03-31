@@ -24,7 +24,7 @@ export function Button({
 
 	const variantClasses = {
 		default: '',
-		ghost: '',
+		ghost: 'hover:bg-neutral-300',
 	};
 
 	return (
