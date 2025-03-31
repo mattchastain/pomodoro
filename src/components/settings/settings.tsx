@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { useCallback, useRef } from 'react';
 import { Input } from '..';
+import { useTimerStore } from '../../store/useTimerStore';
 
 interface SettingsProps {
 	settingsOpen: boolean;
@@ -8,6 +9,9 @@ interface SettingsProps {
 }
 
 export function Settings({ settingsOpen, setSettingsOpen }: SettingsProps) {
+	const { studyDuration, breakDuration, setStudyDuration, setBreakDuration } =
+		useTimerStore();
+
 	const settingsModalRef = useRef(null);
 
 	return (
@@ -29,11 +33,21 @@ export function Settings({ settingsOpen, setSettingsOpen }: SettingsProps) {
 						<div className='flex flex-col gap-4 font-bold md:font-medium'>
 							<div className=''>
 								<h2>Study Duration</h2>
-								<Input />
+								<Input
+									value={studyDuration / 60}
+									onChange={(e) => {
+										setStudyDuration(Number(e.target.value) * 60);
+									}}
+								/>
 							</div>
 							<div className=''>
 								<h2>Break Duration</h2>
-								<Input />
+								<Input
+									value={breakDuration / 60}
+									onChange={(e) =>
+										setBreakDuration(Number(e.target.value) * 60)
+									}
+								/>
 							</div>
 						</div>
 					</motion.div>
