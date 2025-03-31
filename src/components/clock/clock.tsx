@@ -4,9 +4,15 @@ interface TimerProps {
 	timerActive: boolean;
 	timeLeft: number;
 	setTimeLeft: React.Dispatch<React.SetStateAction<number>>;
+	isBreak: boolean;
 }
 
-export function Clock({ timerActive, timeLeft, setTimeLeft }: TimerProps) {
+export function Clock({
+	timerActive,
+	timeLeft,
+	setTimeLeft,
+	isBreak,
+}: TimerProps) {
 	useEffect(() => {
 		let interval: number;
 
@@ -25,8 +31,11 @@ export function Clock({ timerActive, timeLeft, setTimeLeft }: TimerProps) {
 	const seconds = timeLeft % 60;
 
 	return (
-		<div className='mx-auto text-6xl font-bold md:font-medium'>
-			{minutes}:{seconds < 10 ? `0${seconds}` : seconds}
+		<div className='flex flex-col gap-4 mx-auto text-center font-bold md:font-medium'>
+			<p>{isBreak ? 'Break' : 'Study'}</p>
+			<h2 className='text-6xl'>
+				{minutes}:{seconds < 10 ? `0${seconds}` : seconds}
+			</h2>
 		</div>
 	);
 }
