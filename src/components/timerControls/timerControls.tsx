@@ -1,4 +1,4 @@
-import { Pause, Play, RotateCcw } from 'lucide-react';
+import { Pause, Play, SkipForward } from 'lucide-react';
 import { useCallback } from 'react';
 import { Button } from '../button/button';
 
@@ -26,8 +26,8 @@ export function TimerControls({
 				variant='outline'
 			/>
 			<Button
-				icon={RotateCcw}
-				label='Reset'
+				icon={SkipForward}
+				label='Skip'
 				onClick={resetTimer}
 				variant='outline'
 			/>
