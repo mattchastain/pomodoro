@@ -2,10 +2,11 @@ import { AlarmClockCheck, Settings2 } from 'lucide-react';
 import { Button } from '../button/button';
 
 interface HeaderProps {
+	settingsOpen: boolean;
 	setSettingsOpen: (open: boolean) => void;
 }
 
-export function Header({ setSettingsOpen }: HeaderProps) {
+export function Header({ settingsOpen, setSettingsOpen }: HeaderProps) {
 	return (
 		<div className='flex items-center justify-between gap-2'>
 			<div className='flex items-center gap-2'>
@@ -17,7 +18,8 @@ export function Header({ setSettingsOpen }: HeaderProps) {
 			<Button
 				icon={Settings2}
 				iconSize={24}
-				onClick={() => setSettingsOpen(true)}
+				onClick={() => setSettingsOpen(!settingsOpen)}
+				classes='z-50'
 				variant='ghost'
 			/>
 		</div>
