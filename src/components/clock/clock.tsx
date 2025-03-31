@@ -21,5 +21,12 @@ export function Clock({ timerActive, timeLeft, setTimeLeft }: TimerProps) {
 		};
 	}, [timerActive]);
 
-	return <div className='mx-auto'>{timeLeft}</div>;
+	const minutes = Math.floor(timeLeft / 60);
+	const seconds = timeLeft % 60;
+
+	return (
+		<div className='mx-auto text-6xl font-bold md:font-medium'>
+			{minutes}:{seconds < 10 ? `0${seconds}` : seconds}
+		</div>
+	);
 }
