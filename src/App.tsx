@@ -1,5 +1,9 @@
+import { Header } from './components';
+
 export default function App() {
-  return (
-    <div>App</div>
-  )
+	return (
+		<div className='max-w-3xl mx-auto'>
+			<Header />
+		</div>
+	);
 }
