@@ -6,7 +6,7 @@ export default function App() {
 	const { studyDuration, breakDuration } = useTimerStore();
 	const [isBreak, setIsBreak] = useState(false);
 
-	const [settingsOpen, setSettingsOpen] = useState(true);
+	const [settingsOpen, setSettingsOpen] = useState(false);
 
 	const [timerActive, setTimerActive] = useState(false);
 	const [timeLeft, setTimeLeft] = useState<number>(studyDuration);
