@@ -1,9 +1,10 @@
-import { Header } from './components';
+import { Header, Timer } from './components';
 
 export default function App() {
 	return (
-		<div className='max-w-3xl mx-auto'>
+		<div className='flex flex-col gap-12 max-w-xl mx-auto'>
 			<Header />
+			<Timer />
 		</div>
 	);
 }
